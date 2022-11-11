@@ -52,14 +52,15 @@ class Cache extends MusicBeatState
 		add(menuBG);
 
 		#if cpp
-		for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/shared/images/characters")))
+		var list = Assets.list();	
+		for (i in list.filter(text -> text.contains("assets/shared/images/characters")))
 		{
 			if (!i.endsWith(".png"))
 				continue;
 			images.push(i);
 		}
 
-		for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/songs")))
+		for (i in list.filter(text -> text.contains("assets/songs")))
 		{
 			music.push(i);
 		}
