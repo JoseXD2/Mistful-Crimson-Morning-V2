@@ -9,6 +9,7 @@ import flixel.graphics.FlxGraphic;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxPoint;
 import flixel.util.FlxTimer;
+import openfl.utils.Assets;
 import flixel.text.FlxText;
 import flixel.system.FlxSound;
 import lime.app.Application;
@@ -85,7 +86,7 @@ class Cache extends MusicBeatState
 		for (i in images)
 		{
 			var replaced = i.replace(".png","");
-			var data:BitmapData = BitmapData.fromFile("assets/shared/images/characters/" + i);
+			var data:BitmapData = Assets.getBitmapData("assets/shared/images/characters/" + i);
 			var graph = FlxGraphic.fromBitmapData(data);
 			graph.persist = true;
 			graph.destroyOnNoUse = false;
