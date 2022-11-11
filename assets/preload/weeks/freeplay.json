@@ -1,0 +1,24 @@
+{
+	"songs": [
+		["Sanguilacrimae", "squiddy", [182, 203, 194]],
+		["Served", "plankton", [63, 92, 93]],
+		["Satisfaction", "spongebob", [185, 153, 72]],
+		["Propaganda", "reagan", [85, 151, 153]]
+	],
+
+	"weekCharacters": [
+		"",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "",
+	"difficulties": "Hard",
+	"weekBefore": "tutorial",
+	"weekName": "Tutorial",
+	"startUnlocked": true,
+
+	"hideStoryMode": true,
+	"hideFreeplay": false
+}

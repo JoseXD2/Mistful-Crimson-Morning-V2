@@ -1,0 +1,23 @@
+{
+	"songs": [
+		["Humiliation", "squidward", [103, 174, 175]],
+		["Mist", "lolward", [105, 157, 121]],
+		["Doomsday", "darkward", [171, 186, 183]]
+	],
+
+	"weekCharacters": [
+		"",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "The Misty Morning",
+	"difficulties": "Hard",
+	"weekBefore": "tutorial",
+	"weekName": "Teuthida",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}
