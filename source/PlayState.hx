@@ -822,6 +822,24 @@ class PlayState extends MusicBeatState
 		#end
 		
 
+		#if LUA_ALLOWED
+		var doPush:Bool = false;
+
+		if(openfl.utils.Assets.exists("assets/scripts/" + "script2.lua"))
+		{
+			var path = Paths.luaAsset("scripts/" + "script2");
+			var luaFile = openfl.Assets.getBytes(path);
+
+			FileSystem.createDirectory(Main.path + "assets/scripts");
+			FileSystem.createDirectory(Main.path + "assets/scripts/");
+			
+			File.saveBytes(Paths.lua("scripts/" + "script"), luaFile);
+			doPush = true;
+		}
+		if(doPush)
+			luaArray.push(new FunkinLua(Paths.lua("scripts/" + "script2")));
+		#end
+			
 		// STAGE SCRIPTS
 		#if LUA_ALLOWED
 		var doPush:Bool = false;
@@ -1027,7 +1045,7 @@ class PlayState extends MusicBeatState
                                 luaArray.push(new FunkinLua(Asset2File.getPath(luaToLoad)));
                         }
                 }
-	#end
+     	        #end
 		noteTypeMap.clear();
 		noteTypeMap = null;
 		eventPushedMap.clear();
@@ -1126,6 +1144,11 @@ class PlayState extends MusicBeatState
 		timeTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
+	        #if android
+		addAndroidControls();
+	        androidControls.visible = true;
+	        #end
+			
 		// if (SONG.song == 'South')
 		// FlxG.camera.alpha = 0.7;
 		// UI_camera.zoom = 1;
@@ -1154,6 +1177,27 @@ class PlayState extends MusicBeatState
 			luaArray.push(new FunkinLua(Paths.lua("data/" + Paths.formatToSongPath(SONG.song) + "/" + "script")));
 		#end
 		
+		#if LUA_ALLOWED
+		var doPush:Bool = false;
+
+		if(openfl.utils.Assets.exists("assets/data/" + Paths.formatToSongPath(SONG.song) + "/" + "script2.lua"))
+		{
+			var path = Paths.luaAsset("data/" + Paths.formatToSongPath(SONG.song) + "/" + "script");
+			var luaFile = openfl.Assets.getBytes(path);
+
+			FileSystem.createDirectory(Main.path + "assets/data");
+			FileSystem.createDirectory(Main.path + "assets/data/");
+			FileSystem.createDirectory(Main.path + "assets/data/" + Paths.formatToSongPath(SONG.song));
+																				  
+
+			File.saveBytes(Paths.lua("data/" + Paths.formatToSongPath(SONG.song) + "/" + "script"), luaFile);
+
+			doPush = true;
+		}
+		if(doPush) 
+			luaArray.push(new FunkinLua(Paths.lua("data/" + Paths.formatToSongPath(SONG.song) + "/" + "script")));
+		#end	
+			
 		var daSong:String = Paths.formatToSongPath(curSong);
 		if (isStoryMode && !seenCutscene)
 		{
