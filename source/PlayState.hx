@@ -1313,7 +1313,7 @@ class PlayState extends MusicBeatState
 		
 		super.create();
 
-		#if windows
+		
 			if(ClientPrefs.enableShaders) {
 				switch(curSong.toLowerCase()) {
 					case "humiliation":
@@ -1327,7 +1327,7 @@ class PlayState extends MusicBeatState
 						addShaderToCamera('camHUD', new VCRDistortionEffect(0, true, true, true));
 				}
 			}
-		#end
+		
 
 		Paths.clearUnusedMemory();
 
