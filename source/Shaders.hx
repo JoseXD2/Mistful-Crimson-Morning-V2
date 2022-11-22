@@ -580,6 +580,8 @@ class VCRDistortionShader extends FlxShader // https://www.shadertoy.com/view/ld
     }
     void main()
     {
+      #progma body
+
     	vec2 uv = openfl_TextureCoordv;
       vec2 curUV = screenDistort(uv);
     	uv = scandistort(curUV);
