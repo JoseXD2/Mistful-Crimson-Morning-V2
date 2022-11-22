@@ -49,13 +49,13 @@ jobs:
           haxelib install lime 7.9.0
           haxelib install hxCodec
           haxelib install openfl 9.1.0
-          
+          haxelib set flixel 4.11.0
+          haxelib --never install flixel 4.11.0
           haxelib run lime setup flixel
           haxelib install flixel-tools
           haxelib install flixel-ui
           haxelib install flixel 
           haxelib install hscript
-          haxelib install flixel-addons
           
           haxelib git linc_luajit https://github.com/Sirox228/linc_luajit
           haxelib git flixel https://github.com/13rice/flixel
