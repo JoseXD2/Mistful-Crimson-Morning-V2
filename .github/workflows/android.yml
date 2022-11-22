@@ -80,7 +80,7 @@ jobs:
         run: haxelib run lime build android --app-version="4.0.0-${{ github.run_id}}"
 
       - name: Publish Artifact
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@main
         with:
           name: Android Build
           path: export/release/android/bin/app/build/outputs/apk/debug
