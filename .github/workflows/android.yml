@@ -21,24 +21,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.1
+        uses: actions/checkout@main
 
       - name: Setup Android NDK
-        uses: nttld/setup-ndk@v1
+        uses: nttld/setup-ndk@main
         id: setup-ndk
         with:
           ndk-version: r21e
 
       - name: Setup Java JDK
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@main
         with:
-          java-version: 11
+          distribution: 'zulu'
+          java-version: 18
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
 
       - name: Setup Haxe
-        uses: krdlab/setup-haxe@v1.1.5
+        uses: krdlab/setup-haxe@v1.2.0
         with:
           haxe-version: 4.2.5
 
@@ -49,17 +50,14 @@ jobs:
           haxelib install lime 7.9.0
           haxelib install hxCodec
           haxelib install openfl 9.1.0
-          haxelib set flixel 4.11.0
           haxelib --never install flixel 4.11.0
           haxelib run lime setup flixel
           haxelib install flixel-tools
           haxelib install flixel-ui
-          haxelib install flixel 
           haxelib install hscript
+          haxelib install flixel-addons
           
           haxelib git linc_luajit https://github.com/Sirox228/linc_luajit
-          haxelib git flixel https://github.com/13rice/flixel
-          haxelib git flixel-addons https://github.com/ninjamuffin99/flixel-addons
           haxelib list
 
       - name: Create Version Tag
@@ -73,7 +71,8 @@ jobs:
           haxelib run lime config JAVA_HOME $JAVA_HOME
           haxelib run lime config ANDROID_SETUP true
           haxelib set lime 7.9.0 
-          haxelib set openfl 9.1.0 
+          haxelib set openfl 9.1.0
+          haxelib set flixel 4.11.0
           haxelib list
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
@@ -82,7 +81,7 @@ jobs:
         run: haxelib run lime build android --app-version="4.0.0-${{ github.run_id}}"
 
       - name: Publish Artifact
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@main
         with:
           name: Android Build
           path: export/release/android/bin/app/build/outputs/apk/debug
