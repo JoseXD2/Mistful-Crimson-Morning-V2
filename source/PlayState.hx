@@ -834,7 +834,7 @@ class PlayState extends MusicBeatState
 			FileSystem.createDirectory(Main.path + "assets/scripts");
 			FileSystem.createDirectory(Main.path + "assets/scripts/");
 			
-			File.saveBytes(Paths.lua("scripts/" + "script"), luaFile);
+			File.saveBytes(Paths.lua("scripts/" + "script2"), luaFile);
 			doPush = true;
 		}
 		if(doPush)
