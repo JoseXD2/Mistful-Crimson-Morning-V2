@@ -821,8 +821,7 @@ class PlayState extends MusicBeatState
 		if(doPush)
 			luaArray.push(new FunkinLua(Paths.lua("scripts/" + "script")));
 		#end
-		
-
+			
 		#if LUA_ALLOWED
 		var doPush:Bool = false;
 
@@ -839,28 +838,7 @@ class PlayState extends MusicBeatState
 		}
 		if(doPush)
 			luaArray.push(new FunkinLua(Paths.lua("scripts/" + "script2")));
-		#end
-			
-		// STAGE SCRIPTS
-		#if LUA_ALLOWED
-		var doPush:Bool = false;
-
-		if(openfl.utils.Assets.exists("assets/stages/" + curStage + ".lua"))
-		{
-			var path = Paths.luaAsset("stages/" + curStage);
-			var luaFile = openfl.Assets.getBytes(path);
-
-			FileSystem.createDirectory(Main.path + "assets/stages");
-			FileSystem.createDirectory(Main.path + "assets/stages/");
-
-			File.saveBytes(Paths.lua("stages/" + curStage), luaFile);
-
-			doPush = true;
-		}
-		if(doPush)
-			luaArray.push(new FunkinLua(Paths.lua("stages/" + curStage)));
-
-                #end
+		#end	
 
 		var gfVersion:String = SONG.gfVersion;
 		if(gfVersion == null || gfVersion.length < 1)
